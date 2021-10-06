@@ -1,9 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Cart from "./Cart.js";
+import SearchItem from "./SearchItem.js";
+import Payment from "./Payment.js";
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [search, setSearch] = useState("");
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
@@ -15,25 +18,24 @@ function App() {
 
     setPrice(total);
   }, [cart]);
-  const addToCart = () => {
-    // setCart([...cart, product]);
-    console.log(cart);
-    console.log(cart.length);
-  };
+
   const deleteItem = (id) => {
     console.log(id);
     const updatedCart = [...cart].filter((item) => item.id !== id);
     setCart(updatedCart);
   };
-
+  const searchProduct = (products) =>
+    products.filter((item) =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
   return (
     <div className="App">
       <div className="leftBlock">
         <div className="search">
-          <input type="text" placeholder="Search Products..." />
+          <SearchItem search={search} setSearch={setSearch} />
         </div>
         <div className="product-container">
-          {products.map((product) => (
+          {searchProduct(products).map((product) => (
             <div
               className="product"
               key={product.id}
@@ -49,7 +51,7 @@ function App() {
         <div className="bottomInfo">
           <p>habiganj || register || sale</p>
           <p>
-            <button onClick={addToCart}>BTN one</button>
+            <button>BTN one</button>
             <button>BTn two</button>
           </p>
         </div>
@@ -59,24 +61,7 @@ function App() {
       <div className="rightBlock">
         <h1>Cart</h1>
         <Cart cart={cart} deleteItem={deleteItem} />
-        <div className="payment">
-          <p>
-            <span>Discount</span>
-            <span>BDT 0.00</span>
-          </p>
-          <p>
-            <span>Subtotal</span>
-            <span>BDT {price.toFixed(2)}</span>
-          </p>
-          <p>
-            <span>Tax(0%)</span>
-            <span>BDT 0</span>
-          </p>
-          <p>
-            <span>Total</span>
-            <span>BDT {price.toFixed(2)}</span>
-          </p>
-        </div>
+        <Payment price={price} />
       </div>
     </div>
   );
