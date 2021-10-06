@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Cart from "./Cart.js";
 import SearchItem from "./SearchItem.js";
 import Payment from "./Payment.js";
+import Product from "./Product";
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -24,7 +25,7 @@ function App() {
     const updatedCart = [...cart].filter((item) => item.id !== id);
     setCart(updatedCart);
   };
-  const searchProduct = (products) =>
+  const searchProduct = () =>
     products.filter((item) =>
       item.title.toLowerCase().includes(search.toLowerCase())
     );
@@ -34,18 +35,13 @@ function App() {
         <div className="search">
           <SearchItem search={search} setSearch={setSearch} />
         </div>
-        <div className="product-container">
-          {searchProduct(products).map((product) => (
-            <div
-              className="product"
-              key={product.id}
-              onClick={() => setCart([...cart, product])}
-            >
-              <img src={product.image} alt="product " />
-              <p>{`${product.title.substr(0, 12)}`}</p>
-            </div>
-          ))}
-        </div>
+
+        <Product
+          cart={cart}
+          product={products}
+          searchProduct={searchProduct}
+          setCart={setCart}
+        />
 
         {/* bottom */}
         <div className="bottomInfo">
