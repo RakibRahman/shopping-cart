@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 .App {
-  /* text-align: center; */
   display: flex;
   gap: 1rem;
   justify-content: center;
   align-items: flex-start;
   padding: 0.5rem;
   background: #f2f4f9;
+  margin-top: 1rem;
 }
 .leftBlock {
   height: 90vh;
@@ -20,8 +20,8 @@
 }
 .product-container {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1rem;
   place-items: center;
   margin-bottom: auto;
 }
@@ -53,16 +53,28 @@ input[type="search"] {
   padding: 1rem;
   border: none;
   outline: none;
+  caret-color: #f14;
+  border-radius: 5px;
 }
 .bottomInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  padding-top: 1rem;
+  border-top: 1px solid #b7abc4;
+}
+.bottomInfo .btn {
+  display: flex;
+  gap: 0.5rem;
 }
 .bottomInfo button {
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   font-weight: bold;
+  background: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 .rightBlock {
   height: 90vh;

@@ -4,10 +4,10 @@ const BottomInfo = () => {
   return (
     <div className="bottomInfo">
       <p>Dhanmondi | Register | New Sale</p>
-      <p>
+      <div className="btn">
         <button>Options</button>
         <button>New Sale</button>
-      </p>
+      </div>
     </div>
   );
 };

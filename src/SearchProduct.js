@@ -1,4 +1,9 @@
+import { useEffect, useRef } from "react";
 function SearchProduct({ search, setSearch }) {
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
   return (
     <form onSubmit={(e) => e.preventDefault()} style={{ marginBottom: "10px" }}>
       <input
@@ -8,6 +13,7 @@ function SearchProduct({ search, setSearch }) {
         placeholder="Search Products..."
         onChange={(e) => setSearch(e.target.value)}
         value={search}
+        ref={inputRef}
       />
     </form>
   );
