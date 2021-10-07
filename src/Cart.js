@@ -9,10 +9,14 @@ const Cart = ({ cart, deleteItem, setPrice }) => {
 
     setPrice(total);
   }, [cart, setPrice]);
+
+  const Message = () => (cart.length >= 1 ? "" : "No Products On Cart");
   return (
     <div className="cart-container">
       <h3>💂‍♂️ Add Customer</h3>
-
+      <h2 className="message">
+        <Message />
+      </h2>
       {cart.map((item) => (
         <div className="cart" key={item.id}>
           <div className="info">

@@ -123,6 +123,10 @@ input[type="search"] {
   cursor: pointer;
   padding: 0.1rem;
 }
+.message {
+  text-align: center;
+  color: #f14;
+}
 .cart-container .payment {
   width: 100%;
 }
@@ -218,5 +222,8 @@ input[type="search"] {
   }
   .cart-container {
     width: 100%;
+  }
+  .payment {
+    margin-top: 20px;
   }
 }
