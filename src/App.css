@@ -185,3 +185,32 @@ input[type="search"] {
     transform: rotate(1800deg);
   }
 }
+
+@media screen and (max-width: 1280px) {
+  .product-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .App {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .product-container {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 520px) {
+  .rightBlock {
+    height: auto;
+    width: 100%;
+  }
+  .product-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cart-container {
+    width: 100%;
+  }
+}
