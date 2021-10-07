@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { useEffect, useState } from "react";
 import Cart from "./Cart.js";
@@ -5,6 +6,8 @@ import SearchProduct from "./SearchProduct.js";
 import Payment from "./Payment.js";
 import Product from "./Product";
 import BottomInfo from "./BottomInfo.js";
+import { Toaster } from "react-hot-toast";
+
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -20,14 +23,9 @@ function App() {
         setProducts(json);
         setLoading(false);
       });
-
-    const total = [...cart].reduce((a, b) => a + b.price, 0);
-
-    setPrice(total);
-  }, [cart]);
+  }, []);
 
   const deleteItem = (id) => {
-    console.log(id);
     const updatedCart = [...cart].filter((item) => item.id !== id);
     setCart(updatedCart);
   };
@@ -37,11 +35,12 @@ function App() {
     );
   return (
     <div className="App">
+      <Toaster />
       <div className="leftBlock">
         <div className="search">
           <SearchProduct search={search} setSearch={setSearch} />
         </div>
-        {loading && <div class="lds-hourglass"></div>}
+        {loading && <div className="lds-hourglass"></div>}
 
         {!loading && (
           <Product
@@ -56,9 +55,8 @@ function App() {
         <BottomInfo />
       </div>
 
-      {/* cart */}
       <div className="rightBlock">
-        <Cart cart={cart} deleteItem={deleteItem} />
+        <Cart cart={cart} deleteItem={deleteItem} setPrice={setPrice} />
         <Payment price={price} />
       </div>
     </div>
