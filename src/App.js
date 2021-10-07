@@ -1,9 +1,10 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Cart from "./Cart.js";
-import SearchItem from "./SearchItem.js";
+import SearchProduct from "./SearchProduct.js";
 import Payment from "./Payment.js";
 import Product from "./Product";
+import BottomInfo from "./BottomInfo.js";
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -33,7 +34,7 @@ function App() {
     <div className="App">
       <div className="leftBlock">
         <div className="search">
-          <SearchItem search={search} setSearch={setSearch} />
+          <SearchProduct search={search} setSearch={setSearch} />
         </div>
 
         <Product
@@ -44,18 +45,11 @@ function App() {
         />
 
         {/* bottom */}
-        <div className="bottomInfo">
-          <p>habiganj || register || sale</p>
-          <p>
-            <button>BTN one</button>
-            <button>BTn two</button>
-          </p>
-        </div>
+        <BottomInfo />
       </div>
 
       {/* cart */}
       <div className="rightBlock">
-        <h1>Cart</h1>
         <Cart cart={cart} deleteItem={deleteItem} />
         <Payment price={price} />
       </div>

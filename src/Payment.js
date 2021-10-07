@@ -19,6 +19,10 @@ const Payment = ({ price }) => {
         <span>Total</span>
         <span>BDT {price.toFixed(2)}</span>
       </p>
+      <button>
+        <span>Pay </span>
+        <span>BDT {price.toFixed(2)}</span>
+      </button>
     </div>
   );
 };

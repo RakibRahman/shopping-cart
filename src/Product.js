@@ -10,7 +10,7 @@ const Product = ({ cart, setCart, products, searchProduct }) => {
           onClick={() => setCart([...cart, product])}
         >
           <img src={product.image} alt="product " />
-          <p>{`${product.title.substr(0, 12)}`}</p>
+          <p>{`${product.title.substr(0, 6)}....`}</p>
         </div>
       ))}
     </div>
