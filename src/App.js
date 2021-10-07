@@ -10,11 +10,16 @@ function App() {
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState("");
   const [price, setPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((json) => setProducts(json));
+      .then((json) => {
+        setProducts(json);
+        setLoading(false);
+      });
 
     const total = [...cart].reduce((a, b) => a + b.price, 0);
 
@@ -36,13 +41,16 @@ function App() {
         <div className="search">
           <SearchProduct search={search} setSearch={setSearch} />
         </div>
+        {loading && <div class="lds-hourglass"></div>}
 
-        <Product
-          cart={cart}
-          product={products}
-          searchProduct={searchProduct}
-          setCart={setCart}
-        />
+        {!loading && (
+          <Product
+            cart={cart}
+            product={products}
+            searchProduct={searchProduct}
+            setCart={setCart}
+          />
+        )}
 
         {/* bottom */}
         <BottomInfo />
