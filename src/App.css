@@ -203,7 +203,12 @@ input[type="search"] {
   }
 }
 @media screen and (max-width: 520px) {
+  .leftBlock {
+    height: auto;
+    width: 100%;
+  }
   .rightBlock {
+    margin-top: 20px;
     height: auto;
     width: 100%;
   }
